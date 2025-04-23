@@ -56,7 +56,7 @@ gemini-pdf-text-extraction/
 
 ```bash
 node index.js
-``
+```
 
 
 The script will process each PDF in the `input/` directory, extract and correct the text using the Gemini API, and save the results as `.txt` files in the `output/` direcory.
