@@ -23,8 +23,8 @@ gemini-pdf-text-extraction/
 
 ## ⚙️ Prerequisites
 
-- **Node.js*: Ensure you have Node.js installed on your systm.
-- **Google Gemini API Key*: Obtain an API key from the [Google AI Studio](https://ai.google.dev).
+- **Node.js**: Ensure you have Node.js installed on your systm.
+- **Google Gemini API Key**: Obtain an API key from the [Google AI Studio](https://ai.google.dev).
 
 ## 🛠️ Setup Instructions
 
