@@ -1,12 +1,12 @@
 # 📄 Gemini PDF Text Extraction
-This project utilizes the [Google Gemini API](https://ai.google.dev/) to extract and correct text from PDF files, including those that are scanned images or have poor OCR qualityIt leverages AI-powered OCR and natural language processing to ensure accurate and readable text output
+This project utilizes the [Google Gemini API](https://ai.google.dev/) to extract and correct text from PDF files, including those that are scanned images or have poor OCR qualityIt leverages AI-powered OCR and natural language processing to ensure accurate and readable text output
 
 ## 🧰 Features
 
-- **AI-Powered Text Extraction** Processes PDFs using Google's Gemini API to extract text, even from image-based document.
-- **Automatic Text Correction** Enhances readability by correcting spelling, grammar, and formatting issue.
-- **Batch Processing** Automatically processes all PDFs in the `input/` directory and saves the results in the `output/` director.
-- **Retry Mechanism** Implements a retry strategy to handle API rate limits or transient error.
+- **AI-Powered Text Extraction** Processes PDFs using Google's Gemini API to extract text, even from image-based document.
+- **Automatic Text Correction** Enhances readability by correcting spelling, grammar, and formatting issue.
+- **Batch Processing** Automatically processes all PDFs in the `input/` directory and saves the results in the `output/` directory.
+- **Retry Mechanism** Implements a retry strategy to handle API rate limits or transient error.
 
 ## 📁 Project Structure
 
@@ -23,8 +23,8 @@ gemini-pdf-text-extraction/
 
 ## ⚙️ Prerequisites
 
-- **Node.js**: Ensure you have Node.js installed on your systm.
-- **Google Gemini API Key**: Obtain an API key from the [Google AI Studio](https://ai.google.dev).
+- **Node.js**: Ensure you have Node.js installed on your system.
+- **Google Gemini API Key**: Obtain an API key from the [Google AI Studio](https://ai.google.dev).
 
 ## 🛠️ Setup Instructions
 
@@ -40,39 +40,39 @@ gemini-pdf-text-extraction/
    ```
 
 3. **Configure Environment Variables**:
-  - Create a `.env` file in the root directry.
-  - Copy the contents of `.env.example` into `.ev`.
-  - Replace `your_google_genai_api_key` with your actual Google Gemini API ey:
+  - Create a `.env` file in the root directory
+  - Copy the contents of `.env.example` into `.env`.
+  - Replace `your_google_genai_api_key` with your actual Google Gemini API key:
      ```
      GOOGLE_GENAI_API_KEY=your_google_genai_api_key
      ```
 
 4. **Prepare Input Files**:
-  - Place the PDF files you want to process into the `input/` directry.
+  - Place the PDF files you want to process into the `input/` directory.
 
-## 🚀 Running the Scrpt
+## 🚀 Running the Script
 
-To start the text extraction process,run:
+To start the text extraction process,run:
 
 ```bash
 node index.js
 ```
 
 
-The script will process each PDF in the `input/` directory, extract and correct the text using the Gemini API, and save the results as `.txt` files in the `output/` direcory.
+The script will process each PDF in the `input/` directory, extract and correct the text using the Gemini API, and save the results as `.txt` files in the `output/` directory.
 
-## 🔄 Retry Straegy
+## 🔄 Retry Strategy
 
-The script includes a retry mechanism using the `async-retry` package to handle potential API rate limits or transient errs. It will attempt to process each file up to 10 times, with randomized delays between reries.
+The script includes a retry mechanism using the `async-retry` package to handle potential API rate limits or transient errs. It will attempt to process each file up to 10 times, with randomized delays between retries.
 
-## 📄 Otput
+## 📄 Output
 
-For each processed PDF file, a corresponding `.txt` file will be created in the `output/` directory, preserving the original fiename.
+For each processed PDF file, a corresponding `.txt` file will be created in the `output/` directory, preserving the original filename.
 
-## 📬 Contribtions
+## 📬 Contributions
 
-Contributions are welcome! Feel free to open issues or submit pull requests to enhance the functionality or address ay bugs.
+Contributions are welcome! Feel free to open issues or submit pull requests to enhance the functionality or address any bugs.
 
 ---
 
-For more information or to report issues, please visit the [GitHub repository](https://github.com/anhdiepmmk/gemini-pdf-text-extrction). 
+For more information or to report issues, please visit the [GitHub repository](https://github.com/anhdiepmmk/gemini-pdf-text-extrction). 
