@@ -1,6 +1,7 @@
 // https://github.com/google-gemini/api-examples/blob/6779d2884a5e011173d827626a2c66d947c73cb9/javascript/files.js#L59-L76
 require("dotenv").config();
 const path = require("path");
+const async = require("async");
 const fs = require("fs/promises");
 const {
   GoogleGenAI,
@@ -71,29 +72,36 @@ async function exists(path) {
 async function main() {
   const files = await fs.readdir(path.join(__dirname, "input"));
 
-  for (const file of files) {
-    const pdfFilePath = path.resolve(__dirname, "input", file);
+  await async.forEachLimit(files, 6, async (file) => {
+    try {
+      const pdfFilePath = path.resolve(__dirname, "input", file);
 
-    const textFilePath = path.resolve(
-      __dirname,
-      "output",
-      `${path.basename(file, path.extname(file))}.txt`,
-    );
+      const textFilePath = path.resolve(
+        __dirname,
+        "output",
+        `${path.basename(file, path.extname(file))}.txt`,
+      );
 
+      if (await exists(textFilePath)) {
+        console.log(`Skipping ${file} because ${textFilePath} already exists`);
+        return;
+      }
 
-    if (await exists(textFilePath)) {
-      console.log(`Skipping ${file} because ${textFilePath} already exists`);
-      continue;
+      console.log(`Extracting text from ${file}...`);
+      const text = await extractTextFromPDFWithRetry(pdfFilePath);
+
+      await fs.writeFile(textFilePath, text);
+      console.log(`Extracted text from ${file} and saved to ${textFilePath}`);
+
+      await delay(6000);
+    } catch (error) {
+      console.error({
+        file,
+        message: `Error extracting text from ${file}: ${error.message}`,
+        error,
+      });
     }
-
-    console.log(`Extracting text from ${file}...`);
-    const text = await extractTextFromPDFWithRetry(pdfFilePath);
-
-    await fs.writeFile(textFilePath, text);
-    console.log(`Extracted text from ${file} and saved to ${textFilePath}`);
-
-    await delay(6000);
-  }
+  });
 }
 
 main();
